@@ -2,7 +2,7 @@
 
 ## Table of Contents
 ## Demo Preview
--[Demo-Preview](not yet)
+[Demo-Preview](https://mosalah001.github.io/landing-page/)
 # Introduction 
 ## This project is my submission in udacity nano-degree program and I really enjoyed appling what i had learned
 ### It's a Landing Page so ... you know it's a landing page :D
