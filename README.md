@@ -1,6 +1,5 @@
 # Landing Page Project
 
-## Table of Contents
 ## Demo Preview
 [Demo-Preview](https://mosalah001.github.io/landing-page/)
 # Introduction 
