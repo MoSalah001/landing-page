@@ -1,0 +1,442 @@
+/* start of general ruels */
+body {
+    background: rgb(136,203,171);
+    background: linear-gradient(135deg, rgb(119, 30, 74) 0%, rgba(0,13,60,1) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* end of general rules */
+#navbar__list{
+    height: 60px;
+    background-color: #fff;
+    background: linear-gradient(25deg,rgba(68, 0, 255,1)0%,rgba(255,50,50,1)10%,rgba(68, 0, 255,1)20%,rgba(255,50,50,1)30%,
+    rgba(68, 0, 255,1)45%, rgba(255,50,50,1)60%,rgba(68, 0, 255,1)75%);
+    opacity: 1;
+}
+
+
+
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 2em 1rem;
+    text-shadow: -5px -5px 10px red,5px 5px 15px goldenrod;
+    animation: coloredHeader 2s linear infinite;
+    color: rgb(255,255,2);
+}
+
+h2 {
+    border-bottom: 1px solid #cc1;
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+}
+
+p {
+    line-height: 1.6em;
+    color: #eee;
+}
+
+/* ---- Layout Rules ---- */
+
+
+.navList{ /* created via app.js file for the nav links */
+    height: 60px;
+    width: 80px;
+    text-align: center;
+    line-height: 54px;
+}
+.navList a:link{
+    text-decoration: none;
+    color: black;
+}
+.navList a:visited {
+    text-decoration-style: none;
+    color: black;
+}
+.navList a:hover {
+    background-color: #cc1;
+    transition: 0.2s linear;
+}
+.navList a:active{
+    background-color: green;
+}
+
+
+.listLinks {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 80vh;
+}
+
+
+
+.navbar__menu ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.navbar__menu li {
+    display: inline-block;
+}
+
+.navbar__menu{
+    display: none;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    opacity: 1;
+    transition: opacity 1s linear;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+
+.page__header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+
+.page__footer {
+    background: #000;
+    padding: 3em;
+    color: #fff;
+}
+
+.page__footer p{
+    color: #fff;
+}
+
+
+
+.landing__container {
+    padding: 1em;
+    text-align: left;
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right; 
+}
+
+
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: rgba(40, 165, 2, 0.712);
+    background: linear-gradient(0deg, rgba(218, 3, 3, 0.603) 0%, rgba(247, 242, 0, 0.603) 100%);
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(206, 0, 247, 0.603) 45%, rgba(0, 247, 247, 0.603) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -5;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(0, 4, 255, 0.836) 0%, rgba(190, 3, 3, 0.466) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(40deg,
+    rgba(235, 58, 4, 0.808) 0%,rgba(15, 36, 228, 0.466) 15%,
+    rgba(235, 58, 4, 0.808) 30%, rgba(15, 36, 228, 0.466) 45%,
+    rgba(235, 58, 4, 0.808) 60%, rgba(15, 36, 228, 0.466) 75%,
+    rgba(235, 58, 4, 0.808) 90%, rgba(15, 36, 228, 0.466) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -5em;
+    z-index: -5;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+/*start of Creating back to home circle and style it */
+#backToTop {
+    background-color: goldenrod;
+    position: fixed;
+    right: 1vw;
+    bottom: 0.5em;
+    z-index: 1;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 1;
+    transition: 0.2s linear;
+}
+#backToTop a , #backToTop a:visited{
+    color: aqua;
+    font-size: 20px;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    line-height: 70px;
+    padding: 46px 5px;
+    transition: 0.2s linear;
+}
+
+#backToTop:hover{
+    background-color: #cc1;
+}
+#backToTop a:hover {
+    color: red;
+}
+/* end of home circle*/
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+section.activeClass {
+    background: rgb(204, 52, 52);
+    background: linear-gradient(0deg, rgba(65, 180, 71, 0.267) 0%, rgba(155, 145, 1, 0.24) 100%);
+}
+
+section.activeClass .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.activeClass .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+/* animation section */
+/* animate hiding nav bar */
+@keyframes hider {
+    from {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 1);
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0);
+        opacity: 0;
+    }
+}
+/* animate nav menu on mobile */
+@keyframes showSideMenu {
+    from {
+        width:0vw
+    }
+    to {
+        width: 40vw;
+    }
+}
+/* colored header animation*/
+@keyframes coloredHeader {
+    0%{
+        text-shadow:-5px -5px 10px red,5px 5px 15px goldenrod;
+    }
+    55%{
+        text-shadow: 5px 5px 10px red,-5px -5px 15px goldenrod;
+    }
+    100%{
+        text-shadow:-5px -5px 10px red,5px 5px 15px goldenrod;
+    }
+}
+/* end of animation section*/
+@media only screen and (min-width: 35em){
+    h1 {
+        font-size: 7em;
+        margin: 2em 4rem 1em;
+    }
+}
+
+@media only screen and (min-width: 35em){
+    .landing__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+/* style for mobile devices */
+@media only screen and (max-width:780px){
+    h1{
+        color:rgb(255, 255, 2);
+    }
+    p {
+        font-size: 1em;
+    }
+    /* create 3 bars menu */
+    .navbar__menu{
+        display: inline-block;
+        cursor: pointer;
+        background-color: rgba(255,255,255,0);
+        position: absolute;
+        right: 1em;
+    }
+    .bar1 , .bar2 , .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: rgb(255,255,2);
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+    .change .bar1 {
+        transform: rotate(-45deg) translate(-7px,6px);
+    }
+    .change .bar2 {
+        opacity: 0;
+    }
+    .change .bar3 {
+        transform: rotate(45deg) translate(-8px,-10px);
+    }
+    /* create side menu*/
+    #navbar__list{
+        padding-top: 5em;
+        position: fixed;
+        width: 0vw;
+        top: 0em;
+        right: 0em;
+        display: block;
+        background: none;
+        background-color: wheat;
+        height: 100vh;
+        z-index: -1;
+        transition: 0.4s;
+    }
+    ul#navbar__list.showSideMenu{
+        width:40vw;
+        padding-top: 5em;
+        position: fixed;
+        top: 0em;
+        right: 0em;
+        display: block;
+        background: none;
+        background-color: wheat;
+        height: 100vh;
+        z-index: -1;
+        animation: showSideMenu 0.4s linear;
+    }
+    #navbar__list li:first-child{
+        border-top: solid 2px red;
+    }
+    #navbar__list li {
+        margin: -2px 0;
+        display: block;
+        background-color: none;
+        width:100%;
+        border-bottom: solid 2px red;
+        border-top: solid 2px red;
+        border-radius: 30px;
+        border-collapse: collapse;
+    }
+    .navList{ /* created via app.js file for the nav links */
+        display: block;
+        height: 60px;
+        width: 80px;
+        text-align: center;
+        line-height: 54px;
+    }
+    .navList a:link{
+        text-decoration: none;
+        color: black;
+    }
+    .navList a:visited {
+        text-decoration-style: none;
+        color: black;
+    }
+    .navList a:hover {
+        background-color: #cc1;
+        transition: 0.2s linear;
+    }
+    .navList a:active{
+        background-color: green;
+    }
+    
+    .listLinks { /* created via app.js file */
+        display: block;
+        height: 100%;
+        width: 100%;
+    }    
+    /* end of side menu*/
+    #backToTop a { /* link to top with animation */
+        line-height: 4.3em;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 1.5em 0.75em;
+        transition: 1s linear;
+    }
+    /* optimizing floating circles */
+    section:nth-of-type(3n + 1) .landing__container::after{
+        right: 57vw;
+        bottom: -3em;
+    }
+    section:nth-of-type(3n) .landing__container::after {
+        right: 1em;
+        bottom: -4em;
+    }
+    section:nth-of-type(odd) .landing__container::before {
+        top: -3em;
+        left:1em;
+    }
+    section:nth-of-type(even) .landing__container::before {
+        top:0;
+        right: 2em;
+    }
+}
