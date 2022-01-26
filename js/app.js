@@ -99,7 +99,6 @@ function showNav(){
         // check inactivity
         setTimeout(()=>{
             if(window.scrollY == timer) {
-                console.log("true");
                 setTimeout(()=>{
                     navMenu.style.animation = "hider 0.5s linear";
                 },0)
