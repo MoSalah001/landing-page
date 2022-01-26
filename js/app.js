@@ -20,6 +20,7 @@ function createList(arr){
         arr[i].classList.add("navList");
         //Specify list items names and links them to their corresponding sections
         arr[i].innerHTML =`<a href="#section${i+1}" class="listLinks">Section${i+1}`;
+        arr[i].addEventListener("click",smoothScroll);
         navBar.appendChild(arr[i]);
     }
 }
@@ -130,4 +131,12 @@ function backHome(e){
 function showNavMobile(){
     navMenu.classList.toggle("change");
     navBar.classList.toggle("showSideMenu");
+}
+
+//smooth scroll function when click on a link
+function smoothScroll(e){
+    e.preventDefault();
+    let linkID=e.target.hash;
+    const linkItem = document.querySelector(linkID);
+    linkItem.scrollIntoView({block: "start",behavior: "smooth"});
 }

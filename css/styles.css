@@ -7,9 +7,6 @@ body {
     color: #fff;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 /* end of general rules */
 #navbar__list{
     height: 60px;
