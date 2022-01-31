@@ -31,7 +31,7 @@ homeIcon.addEventListener("click",backHome);
 if(windowScreen){
     window.addEventListener("scroll",showNav);
 }else if(!windowScreen){// disable mobile devices events on pc
-    navMenu.addEventListener("click",showNavMobile)
+    navMenu.addEventListener("click",showNavMobile);
 }
 
 
