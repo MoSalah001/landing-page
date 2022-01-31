@@ -15,6 +15,7 @@ function CreateListItems(arr){
         listItemList.classList.add('navList'); // general css class for links
         listItemList.classList.add('listLinks-active'); // active-only css class for links
         listItemList.innerHTML =`<a href="#section${i+1}" class="listLinks">Section${i+1}`;
+        listItemList.addEventListener('click',smoothScroll);
         fragment.appendChild(listItemList);
         sectionLinks.push(listItemList); // push links into array
     }
