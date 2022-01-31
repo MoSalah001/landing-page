@@ -13,7 +13,6 @@ function CreateListItems(arr){
     for(let i =0;i<arr.length;i++){
         const listItemList = document.createElement('li');
         listItemList.classList.add('navList'); // general css class for links
-        listItemList.classList.add('listLinks-active'); // active-only css class for links
         listItemList.innerHTML =`<a href="#section${i+1}" class="listLinks">Section${i+1}`;
         listItemList.addEventListener('click',smoothScroll);
         fragment.appendChild(listItemList);
@@ -22,7 +21,7 @@ function CreateListItems(arr){
     navBar.appendChild(fragment);
 }
 
-CreateListItems(secNum);
+CreateListItems(secNum); // call function to execute
 
 //event listeners section
 //disable pc events on mobile devices
@@ -42,13 +41,17 @@ if(windowScreen){
 function listLinksHighlighter(e){ // auto highlight nav list items ( current active section ) for pc
     e.preventDefault();
     for(let i =0;i<secNum.length;i++){
-        if((secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-510) && windowScreen) ||
-        (secNum[i].getBoundingClientRect().y < 80 && secNum[i].getBoundingClientRect().y > (-620) && !windowScreen)) {
+        if((secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-510) && windowScreen)) {
             secNum[i].parentNode.classList.add('activeClass');
             sectionLinks[i].classList.add('listLinks-active'); // only active class addition when true
+        }
+        else if(secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-715) && !windowScreen){
+            secNum[i].parentNode.classList.add('activeClass');
+            sectionLinks[i].classList.add('listLinks-active-mobile'); // only active class addition when true
         } else {
             secNum[i].parentNode.classList.remove('activeClass');
-            sectionLinks[i].classList.remove('listLinks-active'); // back to default when false
+            sectionLinks[i].classList.remove('listLinks-active'); // back to default when false for pc
+            sectionLinks[i].classList.remove('listLinks-active-mobile'); // back to default when false for mobile
         }
     }   
 }
@@ -91,6 +94,7 @@ function backHome(e){
 }
 
 //mobile devices functions 
+//show nav side menu
 function showNavMobile(){
     navMenu.classList.toggle("change");
     navBar.classList.toggle("showSideMenu");

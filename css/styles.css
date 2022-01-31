@@ -354,7 +354,6 @@ section.activeClass .landing__container::after {
         top: 0em;
         right: 0em;
         display: block;
-        background: none;
         background-color: wheat;
         height: 100vh;
         z-index: -1;
@@ -379,7 +378,6 @@ section.activeClass .landing__container::after {
     #navbar__list li {
         margin: -2px 0;
         display: block;
-        background-color: none;
         width:100%;
         border-bottom: solid 2px red;
         border-top: solid 2px red;
@@ -407,6 +405,10 @@ section.activeClass .landing__container::after {
     }
     .navList a:active{
         background-color: green;
+    }
+    .listLinks-active-mobile{
+        background-color: green;
+        color: #cc1;
     }
     
     .listLinks { /* created via app.js file */
