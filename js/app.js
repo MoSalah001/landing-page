@@ -41,7 +41,7 @@ if(windowScreen){
 function listLinksHighlighter(e){ // auto highlight nav list items ( current active section ) for pc
     e.preventDefault();
     for(let i =0;i<secNum.length;i++){
-        if((secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-520) && windowScreen) ||
+        if((secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-510) && windowScreen) ||
         (secNum[i].getBoundingClientRect().y < 80 && secNum[i].getBoundingClientRect().y > (-620) && !windowScreen)) {
             secNum[i].parentNode.classList.add('activeClass');
             sectionLinks[i].classList.add('listLinks-active'); // only active class addition when true
