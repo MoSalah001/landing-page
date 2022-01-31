@@ -178,11 +178,11 @@ section:nth-of-type(3n) .landing__container::after {
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(0, 4, 255, 0.836) 0%, rgba(190, 3, 3, 0.466) 100%);
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 5em;
+    bottom: -2em;
     z-index: -5;
-    width: 10vh;
-    height: 10vh;
+    width: 15vh;
+    height: 15vh;
     border-radius: 50%;
     opacity: 0;
     transition: ease 0.5s all;
@@ -197,8 +197,8 @@ section:nth-of-type(3n + 1) .landing__container::after {
     rgba(235, 58, 4, 0.808) 60%, rgba(15, 36, 228, 0.466) 75%,
     rgba(235, 58, 4, 0.808) 90%, rgba(15, 36, 228, 0.466) 100%);
     position: absolute;
-    right: 20vw;
-    bottom: -5em;
+    right: 18vw;
+    bottom: -2em;
     z-index: -5;
     width: 15vh;
     height: 15vh;
@@ -251,7 +251,7 @@ section.activeClass .landing__container::before {
 
 section.activeClass .landing__container::after {
     opacity: 1;
-    animation: rotate 5s linear 0s infinite forwards reverse;
+    animation: rotate-custom 5s linear 0s infinite forwards reverse;
 }
 
 /* Section Active Styles Keyframe Animations */
@@ -267,6 +267,18 @@ section.activeClass .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+@keyframes rotate-custom {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em);
+	}
+}
+
 /* animation section */
 /* animate hiding nav bar */
 @keyframes hider {
