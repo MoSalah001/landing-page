@@ -1,31 +1,28 @@
 let navBar = document.getElementById("navbar__list");
 let homeIcon = document.getElementById("backToTop");
 let navMenu = document.getElementsByClassName("navbar__menu")[0];
-let sectionOne = document.getElementById("section1");
-let sectionTwo = document.getElementById("section2");
-let sectionThree = document.getElementById("section3");
-let sectionFour = document.getElementById("section4");
-let listOne = document.createElement("li");
-let listTwo = document.createElement("li");
-let listThree = document.createElement("li");
-let listFour = document.createElement("li");
+let secNum = document.querySelectorAll('.landing__container'); // to get number of sections
 let windowScreen = window.screen.availWidth > 768 ? true : false;
 let navMenuListColor = windowScreen ? "crimson" : "wheat";
-let listItems = [listOne,listTwo,listThree,listFour];
 // hide back to top icon
 homeIcon.style.display = "none"; 
-// Creating nav list sections and give them a class name
-function createList(arr){
+const sectionLinks = []; // array to hold links for styling
+const fragment = document.createDocumentFragment();
+// Creating nav list links to sections and give them a class name
+function CreateListItems(arr){
     for(let i =0;i<arr.length;i++){
-        arr[i].classList.add("navList");
-        //Specify list items names and links them to their corresponding sections
-        arr[i].innerHTML =`<a href="#section${i+1}" class="listLinks">Section${i+1}`;
-        arr[i].addEventListener("click",smoothScroll);
-        navBar.appendChild(arr[i]);
+        const listItemList = document.createElement('li');
+        listItemList.classList.add('navList'); // general css class for links
+        listItemList.classList.add('listLinks-active'); // active-only css class for links
+        listItemList.innerHTML =`<a href="#section${i+1}" class="listLinks">Section${i+1}`;
+        fragment.appendChild(listItemList);
+        sectionLinks.push(listItemList); // push links into array
     }
+    navBar.appendChild(fragment);
 }
 
-createList(listItems);
+CreateListItems(secNum);
+
 //event listeners section
 //disable pc events on mobile devices
 window.addEventListener("scroll",listLinksHighlighter);
@@ -43,50 +40,16 @@ if(windowScreen){
 // start of functions section
 function listLinksHighlighter(e){ // auto highlight nav list items ( current active section ) for pc
     e.preventDefault();
-    if((sectionOne.getBoundingClientRect().y < 80 && sectionOne.getBoundingClientRect().top > (-480) && windowScreen) ||
-    (sectionOne.getBoundingClientRect().y < 80 && sectionOne.getBoundingClientRect().top > (-620) && !windowScreen)
-    ) {
-        sectionOne.classList.add("activeClass");
-        sectionTwo.classList.remove("activeClass");
-        listOne.style.background = "green";
-        listTwo.style.background = navMenuListColor;
-        listThree.style.background = navMenuListColor;
-        listFour.style.background = navMenuListColor;
-    } 
-    else if((sectionTwo.getBoundingClientRect().y < 148 && sectionTwo.getBoundingClientRect().top < 148 && sectionTwo.getBoundingClientRect().top > (-450) && windowScreen) ||
-    (sectionTwo.getBoundingClientRect().y < 202 && sectionTwo.getBoundingClientRect().top < 202 && sectionTwo.getBoundingClientRect().top > (-610)&& !windowScreen)) {
-        sectionTwo.classList.add("activeClass");
-        sectionOne.classList.remove("activeClass");
-        sectionThree.classList.remove("activeClass");
-        listOne.style.background = navMenuListColor;
-        listTwo.style.background = "green";
-        listThree.style.background = navMenuListColor;
-        listFour.style.background = navMenuListColor;
-    }
-    else if((sectionThree.getBoundingClientRect().y < 130 && sectionThree.getBoundingClientRect().top < 130 && sectionThree.getBoundingClientRect().top > (-460) && windowScreen) ||
-    (sectionThree.getBoundingClientRect().y < 202 && sectionThree.getBoundingClientRect().top < 202 && sectionThree.getBoundingClientRect().top > (-650) && !windowScreen)){
-        sectionThree.classList.add("activeClass");
-        sectionTwo.classList.remove("activeClass");
-        sectionFour.classList.remove("activeClass");
-        listOne.style.background = navMenuListColor;
-        listTwo.style.background = navMenuListColor;
-        listThree.style.background = "green";
-        listFour.style.background = navMenuListColor;
-    }else if((sectionFour.getBoundingClientRect().y<134 && sectionFour.getBoundingClientRect().top <134 && windowScreen) ||
-    (sectionFour.getBoundingClientRect().y<180 && sectionFour.getBoundingClientRect().top <180 && !windowScreen))
-    {
-        sectionFour.classList.add("activeClass");
-        sectionThree.classList.remove("activeClass");
-        listOne.style.background = navMenuListColor;
-        listTwo.style.background = navMenuListColor;
-        listThree.style.background = navMenuListColor;
-        listFour.style.background = "green";
-    } else {
-        listOne.style.background = navMenuListColor;
-        listTwo.style.background = navMenuListColor;
-        listThree.style.background = navMenuListColor;
-        listFour.style.background = navMenuListColor;
-    }
+    for(let i =0;i<secNum.length;i++){
+        if((secNum[i].getBoundingClientRect().y < 100 && secNum[i].getBoundingClientRect().y > (-520) && windowScreen) ||
+        (secNum[i].getBoundingClientRect().y < 80 && secNum[i].getBoundingClientRect().y > (-620) && !windowScreen)) {
+            secNum[i].parentNode.classList.add('activeClass');
+            sectionLinks[i].classList.add('listLinks-active'); // only active class addition when true
+        } else {
+            secNum[i].parentNode.classList.remove('activeClass');
+            sectionLinks[i].classList.remove('listLinks-active'); // back to default when false
+        }
+    }   
 }
 
 // Show nav bar and auto hide after inactivity
