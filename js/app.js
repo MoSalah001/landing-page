@@ -2,10 +2,28 @@ let navBar = document.getElementById("navbar__list");
 let homeIcon = document.getElementById("backToTop");
 let navMenu = document.getElementsByClassName("navbar__menu")[0];
 let secNum = document.querySelectorAll('.landing__container'); // to get number of sections
-let windowScreen = window.screen.availWidth > 768 ? true : false;
+let windowScreen = window.screen.width > 768 ? true : false;
 let navMenuListColor = windowScreen ? "crimson" : "wheat";
+
 // hide back to top icon
+
 homeIcon.style.display = "none"; 
+
+//the following function fixes the need to refresh the page when toggeling between desktop view and mobile view
+navMenu.addEventListener('mouseover',()=>{
+    navMenu.addEventListener("click",showNavMobile);
+})
+//event listeners section
+//disable pc events on mobile devices
+window.addEventListener("scroll",listLinksHighlighter);
+window.addEventListener("scroll",showHomeIcon);
+homeIcon.addEventListener("click",backHome);
+if(windowScreen){
+    window.addEventListener("scroll",showNav);
+}else {// disable mobile devices events on pc
+    navMenu.addEventListener("click",showNavMobile);
+}
+//end of event listeners section
 const sectionLinks = []; // array to hold links for styling
 const fragment = document.createDocumentFragment();
 // Creating nav list links to sections and give them a class name
@@ -22,20 +40,6 @@ function CreateListItems(arr){
 }
 
 CreateListItems(secNum); // call function to execute
-
-//event listeners section
-//disable pc events on mobile devices
-window.addEventListener("scroll",listLinksHighlighter);
-window.addEventListener("scroll",showHomeIcon);
-homeIcon.addEventListener("click",backHome);
-if(windowScreen){
-    window.addEventListener("scroll",showNav);
-}else if(!windowScreen){// disable mobile devices events on pc
-    navMenu.addEventListener("click",showNavMobile);
-}
-
-
-//end of event listeners section
 
 // start of functions section
 function listLinksHighlighter(e){ // auto highlight nav list items ( current active section ) for pc
